@@ -5,3 +5,11 @@ export const useMethod = create<{
 }>((set) => ({
   method: "Method",
 }));
+
+
+
+export const useURLInput = create<{
+  url: string;
+}>((set) => ({
+  url: "https://",
+}));
