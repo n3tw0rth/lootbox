@@ -7,8 +7,6 @@ type Props = {
 };
 
 function MenuComponent({ url }: Props) {
-  let AST: { name: string; regex: string }[];
-
   return (
     <>
       <div className="w-full h-16 bg-white mb-2 flex items-center pl-5">
@@ -33,8 +31,9 @@ numbers  = /[0-9]+/g
 */
 
 function Tokenizer({ text }: { text: string }) {
-  let AST: { type: string; color: string; start: number; end: number }[] = [];
+  let AST: { type: string; color: string; value: string; start: number; end: number }[] = [];
   let buffer: string = "";
+  let nextchar: string = "";
   for (let i = 0; i < text.length; i++) {
     switch (ValidateCharType(text[i])) {
       case "letter":
@@ -42,9 +41,10 @@ function Tokenizer({ text }: { text: string }) {
         //check if the next char is a letter or not
         //if the next char is a letter the buffer will not be added in to the AST and the buffer will not be cleared
         //if the next char is not a letter the buffer will cleared after adding to the AST
-        let nextchar: string = text[i + 1];
-        if (nextchar === "undefined") {
-          AST.push({ type: "word", start: i - buffer.length, end: i, color: "blue" });
+        nextchar = text[i + 1] || "";
+
+        if (nextchar === "undefined" || ValidateCharType(nextchar) != "letter") {
+          AST.push({ value: buffer, type: "word", start: i + 1 - buffer.length, end: i, color: "text-gray-800" });
           buffer = "";
         }
         break;
@@ -53,23 +53,22 @@ function Tokenizer({ text }: { text: string }) {
         //check if the next char is a letter or not
         //if the next char is a letter the buffer will not be added in to the AST and the buffer will not be cleared
         //if the next char is not a letter the buffer will cleared after adding to the AST
-        nextchar = text[i + 1];
-        if()
-        if (nextchar === "undefined") {
-          AST.push({ type: "number", start: i - buffer.length, end: i, color: "blue" });
+        nextchar = text[i + 1] || "";
+
+        if (nextchar === "undefined" || ValidateCharType(nextchar) != "number") {
+          AST.push({ value: buffer, type: "number", start: i + 1 - buffer.length, end: i, color: "text-gray-600" });
           buffer = "";
         }
         break;
       case "symbol":
-        AST.push({ type: "symbol", start: i, end: i, color: "orange" });
+        AST.push({ value: text[i], type: "symbol", start: i, end: i, color: "text-gray-500" });
         break;
       default:
         break;
     }
   }
 
-  console.log(AST);
-  return <>{text}</>;
+  return <>{MergeTokens(AST)}</>;
 }
 
 function ValidateCharType(char: string) {
@@ -79,11 +78,25 @@ function ValidateCharType(char: string) {
   } else if (charcode >= 48 && charcode <= 57) {
     return "number";
   } else {
-    if(char == "undefined"){
-      return "undefined"
+    if (char == "undefined") {
+      return "undefined";
     }
     return "symbol";
   }
+}
+
+function MergeTokens(AST: { type: string; color: string; value: string; start: number; end: number }[]) {
+  return (
+    <>
+      {AST.map((item) => {
+        return (
+          <>
+            <span className={`${item.color} font-semibold`}>{item.value}</span>
+          </>
+        );
+      })}
+    </>
+  );
 }
 
 export default MenuComponent;
