@@ -11,5 +11,5 @@ export const useMethod = create<{
 export const useURLInput = create<{
   url: string;
 }>((set) => ({
-  url: "https://",
+  url: "https://catfact.ninja/fact",
 }));

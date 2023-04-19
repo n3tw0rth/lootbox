@@ -24,7 +24,7 @@ function MenuComponent({ selected }: Props) {
           x
         </span>
       </Menu.Button>
-      <Menu.Items className="flex flex-col mt-1">
+      <Menu.Items className="flex flex-col mt-1 z-30">
         {methods.map((item) => {
           return (
             <>
