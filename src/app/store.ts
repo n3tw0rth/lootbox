@@ -13,3 +13,10 @@ export const useURLInput = create<{
 }>((set) => ({
   url: "https://catfact.ninja/fact",
 }));
+
+
+export const useFetchResult = create<{
+  res: any;
+}>((set) => ({
+  res: "",
+}));

@@ -56,7 +56,7 @@ function Tokenizer({ text }: { text: string }) {
         nextchar = text[i + 1] || "";
 
         if (nextchar === "undefined" || ValidateCharType(nextchar) != "number") {
-          AST.push({ value: buffer, type: "number", start: i + 1 - buffer.length, end: i, color: "text-gray-600" });
+          AST.push({ value: buffer, type: "number", start: i + 1 - buffer.length, end: i, color: "text-blue-600" });
           buffer = "";
         }
         break;
