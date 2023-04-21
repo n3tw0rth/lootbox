@@ -7,7 +7,7 @@ import URLInputComponent from "@/components/URLInputComponent";
 import URLTokenizer from "@/components/URLTokenizer";
 import axios from "axios";
 
-import { useURLInput, useFetchResult } from "@/app/store";
+import { useURLInput, useFetchResult, useMethod } from "@/app/store";
 import { tabstyles } from "@/app/const";
 import View from "./reponse/View";
 
@@ -15,8 +15,17 @@ function MenuComponent() {
   const [currentResponseTab, setcurrentResponseTab] = useState("body");
   const [currentRequestTab, setcurrentRequestTab] = useState("params");
 
+  let method: string = useMethod((state) => state.method);
+  let url: string = useURLInput((state) => state.url);
+
   const handleSend = async () => {
-    let res: any = await axios.get("https://catfact.ninja/fact").then((res) => res.data);
+    let res: any = axios({
+      method,
+      url,
+    }).then((res) => res.data);
+
+    console.log({ url, method });
+
     useFetchResult.setState({ res });
   };
 
