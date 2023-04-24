@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 
 function Body({ res }: { res: any }) {
-  useEffect(() => {
-    TraverseObject({ obj: res });
-  });
   return (
     <>
-      <div className="w-full h-full"></div>
+      <div className="w-full h-full">
+        <TraverseObject obj={res} />
+      </div>
     </>
   );
 }
