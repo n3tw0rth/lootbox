@@ -18,5 +18,5 @@ export const useURLInput = create<{
 export const useFetchResult = create<{
   res: any;
 }>((set) => ({
-  res: "",
+  res: "null",
 }));
