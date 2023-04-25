@@ -14,7 +14,7 @@ function URLInputComponent() {
   };
   return (
     <>
-      <input ref={urlInputRef} onChange={handleURLInput} value={"https://catfact.ninja/fact"} type="text" className="w-full h-full border-0 border-l-[1px] pl-5 rounded-r-sm outline-none  hover:bg-gray-200 " placeholder="Enter the URL or paste the text" />
+      <input ref={urlInputRef} onChange={handleURLInput} defaultValue={useURLInput((state) => state.url)} type="text" className="w-full h-full border-0 border-l-[1px] pl-5 rounded-r-sm outline-none  hover:bg-gray-200 " placeholder="Enter the URL or paste the text" />
     </>
   );
 }

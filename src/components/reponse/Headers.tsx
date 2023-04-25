@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function Body({ res }: { res: any }) {
+function Headers({ res }: { res: any }) {
   return (
     <>
       <div className="w-full h-full overflow-scroll px-6">
@@ -15,4 +15,4 @@ function Body({ res }: { res: any }) {
   );
 }
 
-export default Body;
+export default Headers;

@@ -11,7 +11,7 @@ export const useMethod = create<{
 export const useURLInput = create<{
   url: string;
 }>((set) => ({
-  url: "https://catfact.ninja/fact",
+  url: "",
 }));
 
 
@@ -19,4 +19,15 @@ export const useFetchResult = create<{
   res: any;
 }>((set) => ({
   res: {},
+}));
+
+
+
+
+export const useError = create<{
+  error: string,
+  visibility : boolean
+}>((set) => ({
+  error: "",
+  visibility: false
 }));
