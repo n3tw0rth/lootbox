@@ -34,6 +34,7 @@ function MenuComponent() {
 
     localStorage.url = url;
     localStorage.method = method;
+
     //let res: any = { time: { updated: "Apr 24, 2023 04:45:00 UTC", updatedISO: "2023-04-24T04:45:00+00:00", updateduk: "Apr 24, 2023 at 05:45 BST" }, disclaimer: "This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org", chartName: "Bitcoin", bpi: { USD: { code: "USD", symbol: "&#36;", rate: "27,725.8064", description: "United States Dollar", rate_float: 27725.8064 }, GBP: { code: "GBP", symbol: "&pound;", rate: "23,167.4620", description: "British Pound Sterling", rate_float: 23167.462 }, EUR: { code: "EUR", symbol: "&euro;", rate: "27,008.9834", description: "Euro", rate_float: 27008.9834 } } };
   };
 
