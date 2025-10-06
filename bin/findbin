@@ -1,0 +1,6 @@
+#! /bin/bash
+#
+# Quick wildcard-like search for commands that exist on $PATH.
+# Usage: fbin <pattern>
+#
+(IFS=':'; for d in $PATH; do ls -1 "$d" 2>/dev/null; done) | grep -i '$1'
