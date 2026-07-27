@@ -1,0 +1,4 @@
+# Create a dir and cd into it one shot
+# Usage: mkcd <path>
+#
+mkcd() { mkdir -p "$1" && cd "$1"; }
